@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Directory - DSVV Alumni</title>
+    <link rel="stylesheet" href="directory.css" />
+</head>
+<body>
+ <header class="header">
+            <div class="logo">Alumni Directory</div>
+            <nav>
+                <ul>
+                       <li><a href="index.html">Home</a></li>
+                       <li><a href="about.html">About</a></li>
+                       <li><a href="events.html">Events</a></li>
+                       <li><a href="directory.html">Directory</a></li>
+                       <li><a href="mentorship.html">Mentorship</a></li>
+                       <li><a href="jobs.html">Jobs</a></li>
+                       <li><a href="connect.html">Connect</a></li>
+                       <li><a href="login.html">Login/Register</a></li>
+                </ul>
+         </nav>
+   </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <input type="text" id="search" placeholder="Search by name, dept, year..." />
+      <div class="filters">
+        <h3>Filters</h3>
+        <button onclick="filterBy('2021')">Class of 2021</button>
+        <button onclick="filterBy('Mechanical')">Mechanical</button>
+        <button onclick="filterBy('Delhi')">Delhi</button>
+        <button onclick="clearFilters()">Show All</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <h2>All Profiles</h2>
+      <div id="alumni-list" class="alumni-grid"></div>
+    </main>
+  </div>
+
+  <!-- Modal Popup -->
+  <div id="profile-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modal-img" src="" alt="" />
+      <h2 id="modal-name"></h2>
+      <p id="modal-year"></p>
+      <p id="modal-degree"></p>
+      <p id="modal-location"></p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>58,854 More Alumni are active on DSVV Community</p>
+  </footer>
+<script>
+    // Replace with your real Google Sheets published CSV link:
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRLcQL815vc0n76ktQhnrJmW2e784qfcJIHEV-auxBGb_q1NqGieUWkdMlUrsP_cHhWITIAks8xqg6Q/pub?gid=0&single=true&output=csv";
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch(CSV_URL)
+    .then(res => res.text())
+    .then(text => {
+      const rows = text.trim().split("\n");
+      const headers = rows.shift().split(",");
+      const alumniList = document.getElementById("alumni-list");
+
+      rows.forEach(line => {
+        const cols = line.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/);
+        const record = headers.reduce((o, h, i) => {
+          o[h.trim()] = cols[i]?.replace(/^"|"$/g, "").trim();
+          return o;
+        }, {});
+
+        // Build card
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <img src="${record.ImageURL || 'https://via.placeholder.com/80'}" alt="${record.Name}">
+          <h4>${record.Name}</h4>
+          <p>
+            Class of ${record.Year}<br>
+            ${record.Degree}, ${record.Department}<br>
+            ${record.Location}
+          </p>
+        `;
+        div.onclick = () => showModal(record);
+        alumniList.appendChild(div);
+      });
+    })
+    .catch(err => console.error("CSV Load Error:", err));
+
+  document.getElementById("search").addEventListener("input", e => {
+    filterBy(e.target.value);
+  });
+});
+
+function filterBy(keyword) {
+  const k = keyword.toLowerCase();
+  document.querySelectorAll(".card").forEach(card => {
+    card.style.display = card.innerText.toLowerCase().includes(k)
+      ? "block"
+      : "none";
+  });
+}
+
+function clearFilters() {
+  document.getElementById("search").value = "";
+  filterBy("");
+}
+
+// Modal handling
+function showModal(data) {
+  document.getElementById("modal-img").src = data.ImageURL || 'https://via.placeholder.com/100';
+  document.getElementById("modal-name").textContent = data.Name;
+  document.getElementById("modal-year").textContent = `Class of ${data.Year}`;
+  document.getElementById("modal-degree").textContent = `${data.Degree}, ${data.Department}`;
+  document.getElementById("modal-location").textContent = data.Location;
+  document.getElementById("profile-modal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("profile-modal").style.display = "none";
+}
+</script>
+</body>
+</html>

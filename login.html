@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Access Portal</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;700&display=swap">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="container">
+    <input type="radio" name="tab" id="login" checked>
+    <input type="radio" name="tab" id="register">
+
+    <div class="tabs">
+      <label class="tab" for="login">Login</label>
+      <label class="tab" for="register">Register</label>
+    </div>
+
+    <div class="form-area">
+      <div id="login-form" class="form-container">
+        <form>
+          <div class="input-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="input-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="Enter your password" required>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="remember-me">
+            <label for="remember-me">Remember me</label>
+          </div>
+
+          <div class="forgot-password">
+            <a href="#">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn">Login</button>
+
+          <div class="form-footer">
+            Don't have an account? <label for="register">Sign up</label>
+          </div>
+        </form>
+      </div>
+
+      <div id="register-form" class="form-container">
+        <form>
+          <div class="input-group">
+            <label for="register-name">Full Name</label>
+            <input type="text" id="register-name" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="input-group">
+            <label for="register-email">Email Address</label>
+            <input type="email" id="register-email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="input-group">
+            <label for="register-password">Password</label>
+            <input type="password" id="register-password" placeholder="Create a password" required>
+          </div>
+
+          <div class="input-group">
+            <label for="register-confirm">Confirm Password</label>
+            <input type="password" id="register-confirm" placeholder="Confirm your password" required>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="terms" required>
+            <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+          </div>
+
+          <button type="submit" class="btn">Create Account</button>
+
+          <div class="form-footer">
+            Already have an account? <label for="login">Sign in</label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

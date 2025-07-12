@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jobs - DSVV Alumni</title>
+    <link rel="stylesheet" href="jobs.css" />
+</head>
+<body>
+<header class="header">
+            <div class="logo">Jobs</div>
+            <nav>
+                <ul>
+                       <li><a href="index.html">Home</a></li>
+                       <li><a href="about.html">About</a></li>
+                       <li><a href="events.html">Events</a></li>
+                       <li><a href="directory.html">Directory</a></li>
+                       <li><a href="mentorship.html">Mentorship</a></li>
+                       <li><a href="jobs.html">Jobs</a></li>
+                       <li><a href="connect.html">Connect</a></li>
+                       <li><a href="login.html">Login/Register</a></li>
+                       <!-- <li><a href="register.html">Register</a></li> -->
+                    
+                </ul>
+         </nav>
+   </header>
+<!-- Hero -->
+  <div class="hero">
+    <h1>Job & Internship Portal</h1>
+    <p>Alumni can post job openings or refer candidates. Students can upload resumes and apply directly.</p>
+  </div>
+
+  <!-- Alumni & Student Section -->
+  <section class="section">
+    <h2>Opportunities for Alumni & Students</h2>
+    <div class="cards">
+      <!-- Alumni Card -->
+      <div class="card">
+        <h3>Post a Job (Alumni)</h3>
+        <p>Help the next generation by sharing job/internship opportunities or referrals.</p>
+        <button onclick="alert('Redirecting to Alumni Job Posting Form...')">Post a Job</button>
+      </div>
+
+      <!-- Student Card -->
+      <div class="card">
+        <h3>View & Apply (Students)</h3>
+        <p>Explore alumni-referred job/internship openings and apply instantly.</p>
+        <button onclick="alert('Redirecting to Job Listings...')">Browse Jobs</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resume Upload Section -->
+  <div class="upload-section">
+    <h2>Upload Your Resume</h2>
+    <form class="upload-form" onsubmit="submitResume(event)">
+      <input type="text" placeholder="Your Full Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <input type="file" accept=".pdf,.doc,.docx" required />
+      <textarea placeholder="Write a short message or cover note..." rows="4"></textarea>
+      <button type="submit">Submit Resume</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Dev Sanskriti Vishwavidyalaya</p>
+</footer>
+  <script>
+    function submitResume(e) {
+      e.preventDefault();
+      alert("Resume submitted! (Integration with backend or Google Sheets required)");
+    }
+  </script>
+
+</body>
+</html>

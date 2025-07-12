@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connect - DSVV Alumni</title>
+    <link rel="stylesheet" href="connect.css" />
+</head>
+<body>
+<header class="header">
+            <div class="logo">Connect</div>
+            <nav>
+                <ul>
+                       <li><a href="index.html">Home</a></li>
+                       <li><a href="about.html">About</a></li>
+                       <li><a href="events.html">Events</a></li>
+                       <li><a href="directory.html">Directory</a></li>
+                       <li><a href="mentorship.html">Mentorship</a></li>
+                       <li><a href="jobs.html">Jobs</a></li>
+                       <li><a href="connect.html">Connect</a></li>
+                       <li><a href="login.html">Login/Register</a></li>
+                </ul>
+         </nav>
+   </header>
+ <!-- Hero -->
+  <div class="hero">
+    <h1>Student-Alumni Collaboration Zone</h1>
+    <p>Alumni can propose projects or startup ideas. Students can join as interns or collaborators.</p>
+  </div>
+
+  <!-- Collaboration Options -->
+  <section class="section">
+    <h2>Get Involved</h2>
+    <div class="cards">
+      <!-- Alumni Card -->
+      <div class="card">
+        <h3>Alumni: Propose a Project</h3>
+        <p>Have an idea or startup concept? Find students eager to collaborate and grow with you.</p>
+        <button onclick="alert('Redirecting to Project Submission...')">Propose Now</button>
+      </div>
+
+      <!-- Student Card -->
+      <div class="card">
+        <h3>Students: Join a Team</h3>
+        <p>Explore ideas from alumni and contribute as an intern, developer, designer, or researcher.</p>
+        <button onclick="alert('Redirecting to Collaboration Listings...')">Join a Project</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Submit Your Idea Form -->
+  <div class="submit-section">
+    <h2>Submit Your Collaboration Idea</h2>
+    <form class="submit-form" onsubmit="submitIdea(event)">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <input type="text" placeholder="Project/Idea Title" required />
+      <textarea rows="5" placeholder="Brief description of your idea or project..." required></textarea>
+      <button type="submit">Submit Idea</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Dev Sanskriti Vishwavidyalaya</p>
+</footer>
+  <script>
+    function submitIdea(event) {
+      event.preventDefault();
+      alert("Collaboration Idea Submitted! (Backend integration required)");
+    }
+  </script>
+
+</body>
+</html>
